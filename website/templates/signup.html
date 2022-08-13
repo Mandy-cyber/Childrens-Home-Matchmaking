@@ -6,10 +6,15 @@
 <form method="POST">
     <h3 align="center">Sign Up</h3>
     <div class="form-group">
-
-        
+        <label for="urole">Role</label>
+        <input 
+            type="text" 
+            id="urole" 
+            name="urole" 
+            placeholder="Donater or Children's Home"
+        />
         <br>
-        <label for="firstName">Name</label>
+        <label for="full_name">Name</label>
         <input 
             type="text" 
             id="full_name" 
@@ -42,6 +47,6 @@
         />
     </div>
     <br>
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <button type="submit">Submit</button>
 </form>
 {% endblock%}
