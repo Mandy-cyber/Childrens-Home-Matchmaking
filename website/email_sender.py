@@ -5,8 +5,6 @@ import string
 conn = sqlite3.connect('email_list.db')
 cursor = conn.cursor()
 
-
-
 ## getting 'emails' column from the table
 cursor.execute("SELECT email FROM email_list")
 
