@@ -12,12 +12,16 @@ import json
 views = Blueprint('views', __name__)
 @views.route('/', methods=['GET', 'POST'])
 def home():
-    print('')
-    return render_template("home.html", user=current_user)
+    return render_template("home.html")
 
-@views.route('/gallery', methods=['GET', 'POST'])
-def gallery():
-    return render_template("gallery.html", user=current_user)
+@views.route('/shelters', methods=['GET', 'POST'])
+def shelters():
+    allShelters = Home.query.all()
+    return render_template("shelters.html", user=current_user, shelters=allShelters)
+
+@views.route('/about')
+def about():
+    return render_template("about_us.html")
 
 #------------------------------------------------------------------------#
 #VIEWS TO DO WITH CHILDREN'S HOMES
