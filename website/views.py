@@ -8,5 +8,15 @@ import json
 views = Blueprint('views', __name__)
 @views.route('/', methods=['GET', 'POST'])
 def home():
-    print('put stuff here later')
+    print('')
     return render_template("home.html")
+
+@views.route('/chome', methods=['GET', 'POST'])
+def chome_profile():
+    print('')
+    return render_template("chome_profile.html")
+
+@views.route('/donater', methods=['GET', 'POST'])
+def donater():
+    print('')
+    return render_template("d_profiles.html")
