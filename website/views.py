@@ -15,12 +15,15 @@ def home():
     print('')
     return render_template("home.html", user=current_user)
 
+@views.route('/gallery', methods=['GET', 'POST'])
+def gallery():
+    return render_template("gallery.html", user=current_user)
+
 #------------------------------------------------------------------------#
 #VIEWS TO DO WITH CHILDREN'S HOMES
 @views.route('/chome', methods=['GET', 'POST'])
 @login_required
 def chome_profile():
-    print('')
     return render_template("chome_profile.html", user=current_user)
 
 @views.route('/chome-edit-profile', methods=['GET', 'POST'])
@@ -97,26 +100,77 @@ def chome_edit_profile():
             db.session.add(new_home)
             db.session.commit()
         db.session.commit()
-
-        print(home.home_name, home.home_email, home.home_location, home.home_population, home.home_specialization, home.home_description)
         return redirect(url_for('views.chome_profile'))
     return render_template("chome_edit_your_profile.html", user=current_user)
 
 
 #------------------------------------------------------------------------#
 #VIEWS TO DO WITH DONATERS
+#TODO uncomment login_required decoraters
+
+
 @views.route('/donater', methods=['GET', 'POST'])
 @login_required
 def donater():
-    print('')
-    return render_template("d_profiles.html", user=current_user)
+    #-------#
+    if current_user.urole != "Donater":
+        return redirect(url_for("auth.login"))
+    #-------#
+    return render_template("d_profile.html", user=current_user)
+
+
+
+@views.route('/donater-edit-profile', methods=['GET', 'POST'])
+@login_required
+def donater_edit_profile():
+    #-------#
+    if current_user.urole != "Donater":
+        return redirect(url_for("auth.login"))
+    #-------#
+    if request.method == 'POST':
+        donater_name = request.form.get('donater_name')
+        current_email = request.form.get('current_email')
+        donater_email = request.form.get('donater_email')
+        #---------------------------#
+        #Updating User Table
+        this_user = User.query.filter_by(email=current_email).first() 
+        if len(donater_name) > 0:
+            this_user.full_name = donater_name
+            db.session.commit()
+        else:
+            print('')
+        if len(donater_email) > 0:
+            this_user.email = donater_email
+            db.session.commit()
+        else:
+            print('')
+        #---------------------------#
+        #Updating Donater Table
+        donater = Donater.query.filter_by(donater_email=current_email).first()
+        if donater:
+            donater.donater_name = this_user.full_name
+            donater.donater_email = this_user.email
+            db.session.commit()
+        else:
+            donater_name = this_user.full_name
+            donater_email = this_user.email
+            new_donater = Donater(full_name=donater_name, donater_email=donater_email)
+            db.session.add(new_donater)
+            db.session.commit()
+        db.session.commit()
+        print(donater.full_name, donater.donater_email)
+        return redirect(url_for("views.donater"))
+    return render_template("donater_edit_your_profile.html", user=current_user)
+
 
 
 @views.route('/matchmaking-survey', methods=['GET', 'POST'])
 @login_required
-def donater_edit_profile():
+def donater_survey():
+    #-------#
     if current_user.urole != "Donater":
-        return redirect(url_for("views.home"))
+        return redirect(url_for("auth.login"))
+    #-------#
     if request.method == 'POST':
         print('')
     else: 
