@@ -10,3 +10,8 @@ views = Blueprint('views', __name__)
 def home():
     print('put stuff here later')
     return render_template("home.html")
+
+@views.route('/signup', methods=['GET', 'POST'])
+def choose_a_signup():
+    print('put stuff here later')
+    return render_template("signup.html")
