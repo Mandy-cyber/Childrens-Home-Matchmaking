@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matching Form</title>
+    <link rel="stylesheet" href="match.css">
+</head>
+<body>
+    <div class="main">
+        <div class="form_header">
+            
+        </div>
+        <div class="form_holder">
+            <form action="">
+                <div class="form_item">
+                    <label for="parish">Where are you located?</label>
+                    <select name="parish" id="parish">
+                        <option value="none" selected disabled hidden>Select an Option</option>
+                        <option value="kingston">Kingston</option>
+                        <option value="st_andrew">St. Andrew</option>
+                        <option value="st_catherine">St. Catherine</option>
+                        <option value="clarendon">Clarendon</option>
+                        <option value="manchester">Manchester</option>
+                        <option value="st_elizabeth">St. Elizabeth</option>
+                        <option value="westmoreland">Westmoreland</option>
+                        <option value="hanover">Hanover</option>
+                        <option value="st_james">St. James</option>
+                        <option value="trelawny">Trelawny</option>
+                        <option value="st_ann">St. Ann</option>
+                        <option value="st_mary">St. Mary</option>
+                        <option value="portland">Portland</option>
+                        <option value="st_thomas">St. Thomas</option>
+                    </select>
+                </div>
+                <br>
+                <div class="form_item">
+                    <label for="budget">What is your budget?</label>
+                    <input type="number" id="budget" name="budget" step="1000">
+                </div>
+                <br>
+                <div class="form_item">
+                    <label for="party">How large is your group?</label>
+                    <input type="party" id="party" name="party" step="1">
+                </div>
+                <br>
+                <div class="form_item">
+                    <label for="specialization">What type of home are you looking for?</label>
+                    <select name="specialization" id="specialization">
+                        <option value="none" selected disabled hidden>Select an Option</option>
+                        <option value="general">General Home (no specialization)</option>
+                        <option value="all_girls">All Girls</option>
+                        <option value="all_boys">All Boys</option>
+                        <option value="disabilities">Disabilities</option>
+                    </select>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
