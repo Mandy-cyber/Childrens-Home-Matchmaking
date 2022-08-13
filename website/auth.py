@@ -1,7 +1,7 @@
 #GET requests display content, POST requests submit content (sorta)
 from flask import Blueprint, render_template, request, flash, redirect, url_for
 # from .models import User
-from . import db, login_manager
+from . import db, LoginManager
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import login_user, login_required, logout_user, current_user
 from functools import wraps
@@ -26,25 +26,12 @@ def login_required(role="ANY"):
 
 
 #------------------------------------------------------------------------#
-#LOGIN as Donator
+#LOGIN
 
-@auth.route('/login-donator', methods=['GET', 'POST']) #specifying which methods this page (view) will use
+@auth.route('/login', methods=['GET', 'POST']) #specifying which methods this page (view) will use
 def login_donator():
     print("will fill this part in later")
-    return render_template("login_donator.html") #display relevant html page
-
-
-
-
-#------------------------------------------------------------------------#
-#LOGIN as Children's Home
-
-@auth.route('/login-chome', methods=['GET', 'POST'])
-def login_chome():
-    print("will fill this part in later")
-    return render_template("login_chome.html")
-
-
+    return render_template("login.html") #display relevant html page
 
 
 #------------------------------------------------------------------------#
@@ -57,27 +44,10 @@ def logout():
     return redirect(url_for('views.home'))
 
 
-
-
 #------------------------------------------------------------------------#
-#SIGNUP as Donator
+#SIGNUP
 
-@auth.route('/sign-up-donator', methods=['GET', 'POST'])
-def signup_donator():
+@auth.route('/sign-up', methods=['GET', 'POST'])
+def signup():
     print("will fill this part in later")
-    return render_template("signup_donator.html")
-
-
-
-
-#------------------------------------------------------------------------#
-#SIGNUP as Children's Home
-
-@auth.route('/sign-up-chome', methods=['GET', 'POST'])
-def signup_chome():
-    print("will fill this part in later")
-    return render_template("signup_chome.html")
-
-
-
-#------------------------------------------------------------------------#
+    return render_template("signup.html")
