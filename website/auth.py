@@ -28,10 +28,26 @@ def login_required(role="ANY"):
 #------------------------------------------------------------------------#
 #LOGIN
 
-@auth.route('/login', methods=['GET', 'POST']) #specifying which methods this page (view) will use
-def login_donator():
-    print("will fill this part in later")
-    return render_template("login.html") #display relevant html page
+@auth.route('/login', methods=['GET', 'POST'])
+def login():
+    if request.method == 'POST':
+        email = request.form.get('email')
+        password = request.form.get('password')
+        user = User.query.filter_by(email=email).first()
+        if user: #if we did actually find a user
+            if check_password_hash(user.password, password):
+                flash('Logged in successfully', category='success')
+                login_user(user, remember=True)
+                if user.urole == "Donater":
+                    return redirect(url_for('views.donater'))
+                else:
+                    return redirect(url_for('views.chome_profile'))
+            else:
+                flash('Incorrect password, try again.', category='error')
+        else:
+            flash('Email does not exist', category='error')
+
+    return render_template("login.html", user=current_user)
 
 
 #------------------------------------------------------------------------#
