@@ -1,6 +1,6 @@
 #GET requests display content, POST requests submit content (sorta)
 from flask import Blueprint, render_template, request, flash, redirect, url_for
-# from .models import User
+from .models import User
 from . import db, LoginManager
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import login_user, login_required, logout_user, current_user
@@ -14,7 +14,7 @@ def login_required(role="ANY"):
     def wrapper(fn):
         @wraps(fn)
         def decorated_view(*args, **kwargs):
-            if not current_user.is_authenticated():
+            if not current_user.is_authenticated:
                 return login_manager.unauthorized()
             if ((current_user.urole != role) and (role != "ANY")):
                 return login_manager.unauthorized()      
@@ -49,5 +49,30 @@ def logout():
 
 @auth.route('/sign-up', methods=['GET', 'POST'])
 def signup():
-    print("will fill this part in later")
-    return render_template("signup.html")
+    if request.method == 'POST':
+        urole = request.form.get('urole')
+        full_name = request.form.get('full_name')
+        email = request.form.get('email')
+        password1 = request.form.get('password1')
+        password2 = request.form.get('password2')
+        user = User.query.filter_by(email=email).first() 
+        if user:
+            flash('Email already exists', category='error')
+        else:
+            if len(email) < 4:
+                flash('Invalid email', category='error')
+            elif len(full_name) < 2:
+                flash('Invalid first name', category='error')
+            elif password1 != password2:
+                flash('Passwords do not match', category='error')
+            elif len(password1) < 7:
+                flash('Password is too short', category='error')
+            else:
+                #add user to database
+                new_user = User(full_name=full_name, email=email, password=generate_password_hash(password1, method='sha256'), urole=urole)
+                db.session.add(new_user)
+                db.session.commit()
+                flash('Account created successfully!', category='success')
+                login_user(new_user, remember=True)
+                return redirect(url_for('views.home'))
+    return render_template("signup.html", user=current_user)
