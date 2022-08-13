@@ -1,0 +1,59 @@
+<!-- Profile Page For Children's Homes -->
+{% extends "base.html" %}
+
+{% block title %}Your Account{% endblock%}
+
+{% block content%}
+
+<div id="user_details">
+    <form method="POST">
+        <h3 align="center">Edit Your Profile</h3>
+        <div>
+            <label for="home_name">Name of Home</label>
+            <input 
+                type="text" 
+                id="home_name" 
+                name="home_name" 
+                placeholder="Enter name of the home"
+            />
+            <label for="home_email">Email Address</label>
+            <input 
+                type="email" 
+                id="home_email" 
+                name="home_email" 
+                placeholder="Enter email address"
+            />
+            <label for="home_location">Location</label>
+            <input 
+                type="text" 
+                id="home_location" 
+                name="home_location" 
+                placeholder="Enter address of the home"
+            />
+            <label for="home_population">Population</label>
+            <input 
+                type="text" 
+                id="home_population" 
+                name="home_population" 
+                placeholder="How many children live in the home"
+            />
+            <label for="home_specialization">Specialization</label>
+            <input 
+                type="text" 
+                id="home_specialization" 
+                name="home_specialization" 
+                placeholder="e.g special needs children"
+            />
+            <label for="home_description">Description</label>
+            <input 
+                type="text" 
+                id="home_description" 
+                name="home_description" 
+                placeholder="Give a brief description of the home. Max 512 characters"
+            />
+        <br>
+        <button type="submit">Save Changes</button>
+    </form>
+</div>
+
+{% endblock %}

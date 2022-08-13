@@ -57,7 +57,7 @@ def login():
 @login_required(role="ANY")
 def logout():
     logout_user() #logs out current user
-    return redirect(url_for('views.home'))
+    return redirect(url_for('auth.login'))
 
 
 #------------------------------------------------------------------------#
