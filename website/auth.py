@@ -1,6 +1,6 @@
 #GET requests display content, POST requests submit content (sorta)
 from flask import Blueprint, render_template, request, flash, redirect, url_for
-from .models import User
+from .models import User, Home, Donater
 from . import db, LoginManager
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import login_user, login_required, logout_user, current_user
@@ -89,6 +89,14 @@ def signup():
                 db.session.add(new_user)
                 db.session.commit()
                 flash('Account created successfully!', category='success')
+                if new_user.urole == 'Donater':
+                    new_donater = Donater(full_name=full_name, donater_email=email, donater_password=generate_password_hash(password1, method='sha256'))
+                    db.session.add(new_donater)
+                    db.session.commit()
+                elif new_user.urole == "CHome":
+                    new_home = Home(home_name=full_name, home_email=email, home_password=generate_password_hash(password1, method='sha256'))
+                    db.session.add(new_home)
+                    db.session.commit()
                 login_user(new_user, remember=True)
                 return redirect(url_for('views.home'))
     return render_template("signup.html", user=current_user)
