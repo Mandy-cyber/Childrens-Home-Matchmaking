@@ -110,3 +110,14 @@ def chome_edit_profile():
 def donater():
     print('')
     return render_template("d_profiles.html", user=current_user)
+
+
+@views.route('/matchmaking-survey', methods=['GET', 'POST'])
+@login_required
+def donater_edit_profile():
+    if current_user.urole != "Donater":
+        return redirect(url_for("views.home"))
+    if request.method == 'POST':
+        print('')
+    else: 
+        return render_template("match.html", user=current_user)
