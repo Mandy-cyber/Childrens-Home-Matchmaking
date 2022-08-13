@@ -1,13 +1,30 @@
+#GET requests display content, POST requests submit content (sorta)
 from flask import Blueprint, render_template, request, flash, redirect, url_for
 # from .models import User
-from . import db
+from . import db, login_manager
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import login_user, login_required, logout_user, current_user
+from functools import wraps
 
 auth = Blueprint('auth', __name__)
-#TODO change names of html files 
 
-#GET requests display content, POST requests submit content (sorta)
+#------------------------------------------------------------------------#
+#TESTING SOMETHING HERE
+def login_required(role="ANY"):
+    def wrapper(fn):
+        @wraps(fn)
+        def decorated_view(*args, **kwargs):
+            if not current_user.is_authenticated():
+                return login_manager.unauthorized()
+            if ((current_user.urole != role) and (role != "ANY")):
+                return login_manager.unauthorized()      
+            return fn(*args, **kwargs)
+        return decorated_view
+    return wrapper
+# https://stackoverflow.com/questions/15871391/implementing-flask-login-with-multiple-user-classes
+
+
+
 #------------------------------------------------------------------------#
 #LOGIN as Donator
 
@@ -15,6 +32,8 @@ auth = Blueprint('auth', __name__)
 def login_donator():
     print("will fill this part in later")
     return render_template("login_donator.html") #display relevant html page
+
+
 
 
 #------------------------------------------------------------------------#
@@ -26,14 +45,18 @@ def login_chome():
     return render_template("login_chome.html")
 
 
+
+
 #------------------------------------------------------------------------#
 #LOGOUT
 
 @auth.route('/logout')
-@login_required #can only logout if you are already logged in 
+@login_required(role="ANY")
 def logout():
     logout_user() #logs out current user
     return redirect(url_for('views.home'))
+
+
 
 
 #------------------------------------------------------------------------#
@@ -45,6 +68,8 @@ def signup_donator():
     return render_template("signup_donator.html")
 
 
+
+
 #------------------------------------------------------------------------#
 #SIGNUP as Children's Home
 
@@ -52,5 +77,7 @@ def signup_donator():
 def signup_chome():
     print("will fill this part in later")
     return render_template("signup_chome.html")
+
+
 
 #------------------------------------------------------------------------#
