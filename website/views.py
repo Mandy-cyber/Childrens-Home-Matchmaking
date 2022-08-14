@@ -3,16 +3,16 @@ from flask_login import login_required, current_user
 from .auth import login
 from . import db 
 from .models import User, Home, Donater
-import json
+import sqlite3
 
-#TODO change html pages accordingly
+
 
 #------------------------------------------------------------------------#
 #GENERAL VIEWS
 views = Blueprint('views', __name__)
 @views.route('/', methods=['GET', 'POST'])
 def home():
-    return render_template("home.html")
+    return render_template("home.html", user=current_user)
 
 @views.route('/shelters', methods=['GET', 'POST'])
 def shelters():
@@ -21,7 +21,7 @@ def shelters():
 
 @views.route('/about')
 def about():
-    return render_template("about_us.html")
+    return render_template("about_us.html", user=current_user)
 
 #------------------------------------------------------------------------#
 #VIEWS TO DO WITH CHILDREN'S HOMES
@@ -41,6 +41,9 @@ def chome_edit_profile():
         home_population = request.form.get('home_population')
         home_specialization = request.form.get('home_specialization')
         home_description = request.form.get('home_description')
+        home_needs = request.form.get('home_needs')
+        home_needs_cost = request.form.get('home_needs_cost')
+        home_needs_cost = int(home_needs_cost)
         #---------------------------#
         #Updating User Table
         this_user = User.query.filter_by(email=current_email).first() 
@@ -81,6 +84,16 @@ def chome_edit_profile():
                 db.session.commit()
             else:
                 print('No change')
+            if len(home_needs) > 0:
+                home.home_needs = home_needs
+                db.session.commit()
+            else:
+                print('No change')
+            if home_needs_cost > 0:
+                home.home_needs_cost = home_needs_cost
+                db.session.commit()
+            else:
+                print('No change')
         else:
             home_name = this_user.full_name
             home_email = this_user.email
@@ -100,7 +113,16 @@ def chome_edit_profile():
                 home_description = home_description
             else:
                 home_description = ""
-            new_home = Home(home_name=home_name, home_email=home_email, home_location=home_location, home_population=home_population, home_specialization=home_specialization, home_description=home_description)
+            if len(home_needs) > 0:
+                home_needs = home_needs
+            else:
+                home_needs = ""
+            if home_needs_cost > 0:
+                home_needs_cost = home_needs_cost
+            else:
+                home_needs_cost = 0
+
+            new_home = Home(home_name=home_name, home_email=home_email, home_location=home_location, home_population=home_population, home_specialization=home_specialization, home_description=home_description, home_needs=home_needs, home_needs_cost=home_needs_cost)
             db.session.add(new_home)
             db.session.commit()
         db.session.commit()
@@ -167,7 +189,6 @@ def donater_edit_profile():
     return render_template("donater_edit_your_profile.html", user=current_user)
 
 
-
 @views.route('/matchmaking-survey', methods=['GET', 'POST'])
 @login_required
 def donater_survey():
@@ -176,6 +197,9 @@ def donater_survey():
         return redirect(url_for("auth.login"))
     #-------#
     if request.method == 'POST':
-        print('')
+        parish = request.form.get('parish')
+        budget = request.form.get('budget')
+        party_size = request.form.get('party')
+        specialization = request.form.get('specialization')
     else: 
         return render_template("match.html", user=current_user)
