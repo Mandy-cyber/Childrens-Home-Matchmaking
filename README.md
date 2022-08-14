@@ -1,4 +1,10 @@
 # Children's Home Matchmaking 
+<p align="center"> 
+
+<img src=https://www.mustardseed.com/our-work/where-we-serve/jamaica alt="Children From Children's Home" > 
+
+</p>
+
 ## 💻 Introduction
 Our project, Children's Home Matchmaking, seeks to address one of the main problems in Jamaican society: Social Inequity. Many Children's homes in Jamaica are heavily dependent on donations, yet getting in contact with a home is rather difficult. Our project seeks to create a pathway between donors and homes, specifically tailored to the homes' needs. Homes may have a variety of needs, which is the reason for our matchmaking system. This project will allow us to play our part in tackling social inequity. By giving the homes greater exposure, we hope to reach a target audience of those who are well off and willing to distribute and share resources and funds, to create a more equal, caring society.
 
@@ -9,6 +15,12 @@ With Children's Home Matchmaking, users fall into 2 general categories, donors a
 This project was developed for the Katy Youth Hacks Hackathon 2022. As a Jamaican team that was challenged to tackle a social inequality issue, we had a number of options to choose from and we chose one that we genuinely believed could be used to address social inequity beyond just being created for a hackathon, we hope that our future actions will speak louder than our ~~words~~  project. Our team demonstrates all around badness 
 
 ## Features, Skills and Techniques
+###Design
+- The logo was created using Canva which is an online design software
+- The Webite's desing was done using Cascading Style Sheets. The colour scheme was specifically chosen to be cool, friendly and welcoming to encourage donors to make contributions to the houses. The sun represents a rise in the change we hope to bring. 
+
+###Python 
+- 
 
 ## Contributors:
 
