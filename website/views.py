@@ -33,11 +33,19 @@ def shelter_details(home_name):
 @views.route('/chome', methods=['GET', 'POST'])
 @login_required
 def chome_profile():
+    #-------#
+    if current_user.urole != "CHome":
+        return redirect(url_for("auth.login"))
+    #-------#
     return render_template("chome_profile.html", user=current_user)
 
 @views.route('/chome-edit-profile', methods=['GET', 'POST'])
 @login_required
 def chome_edit_profile():
+    #-------#
+    if current_user.urole != "CHome":
+        return redirect(url_for("auth.login"))
+    #-------#
     if request.method == 'POST':
         home_name = request.form.get('home_name')
         current_email = request.form.get('current_email')

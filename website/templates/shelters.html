@@ -3,16 +3,19 @@
 {% block title %}Children's Homes{% endblock%}
 
 {% block content%}
-<div class="container" style="background-color: #6f5acd; width: 225px; padding: 1.25vw 1.25vw 2vw 1.25vw; margin-top: 6vw; margin-left: 3vw; border: solid #6f5acd 3px;">
+<body background="{{ url_for('static', filename='gallery_bg.png') }}"></body>
+
+
+<div class="container" style="background-color: #6f5acd; width: 225px; padding: 1.25vw 1.25vw 2vw 1.25vw; margin-top: 5.5vw; margin-left: 3vw; border: solid #6f5acd 3px;">
     <h1 style="color: #b7a7f7; font-family: 'Raleway', sans-serif; font-weight: 600;">Get <span>Matched</span> with a Home</h1>
     <p style="color: white; font-family: 'Barlow', sans-serif;">Whether it's 500JMD or 50,000JMD, every donation matters. Try out this survey we have created to find a home that matches not just your financial circumstances, but social, locational, and so much more!
     </p>
-    <button style="margin-top: 10px; background-color: #de8ed8; border: none; padding: 5px;"><a href="/shelters" style="text-decoration: none; color: white;">Start Now!</a></button>
+    <button style="margin-top: 10px; background-color: #de8ed8; border: none; padding: 5px;"><a href="/matchmaking-survey" style="text-decoration: none; color: white;">Start Now!</a></button>
 </div>
 
-<div id="wrapper" class="container" style="width: 1000px; margin-left: 21vw; margin-top: -42vw;">
+<div id="wrapper" class="container" style="background-color: white; width: 1000px; margin-left: 21vw; margin-top: -40vw;">
             {% for shelter in shelters %}
-            <div class="container" style="width: 300px; border: solid rgb(209, 205, 205) 2px; margin: 35px; float: left;">
+            <div class="container" style="background-color: white; box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); transition: 0.3s; border-radius: 3px; width: 300px; margin: 35px; float: left;">
                 <ul class="list-group list-group-flush" id="shelters">
                     <li class="list-group-item">
                         <img src="{{ url_for('static', filename='example.jpg') }}" style="max-width: 100%; max-height: 100%;">
