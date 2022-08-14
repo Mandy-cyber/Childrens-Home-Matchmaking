@@ -25,3 +25,5 @@ class Home(db.Model):
     home_population = db.Column(db.Integer)
     home_specialization = db.Column(db.String(64))
     home_description = db.Column(db.String(512))
+    home_needs = db.Column(db.String(512))
+    home_needs_cost = db.Column(db.Integer)
