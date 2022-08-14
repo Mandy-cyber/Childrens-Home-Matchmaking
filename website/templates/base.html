@@ -41,14 +41,6 @@
                     <li class="list_item">
                         <a href="/logout" class="list-item-link">Logout</a>
                     </li >
-                {% else %}
-                    <li class="list_item">
-                        <a href="/login" class="list-item-link">Login</a>
-                    </li>
-                {% endif %}
-                <li></li>
-                <li></li>
-                <li>
                     {% if user.urole == "CHome" %}
                         <a href="/chome" class="list-item-link">
                             <img src="account.png" alt="Profile" id="account">
@@ -58,7 +50,13 @@
                             <img src="account.png" alt="Profile" id="account">
                         </a>
                     {% endif %}
-                </li>
+                {% else %}
+                    <li class="list_item">
+                        <a href="/login" class="list-item-link">Login</a>
+                    </li>
+                {% endif %}
+                <li></li>
+                <li></li>
             </ul>
         </div>
     </nav>
