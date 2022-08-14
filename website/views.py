@@ -226,7 +226,7 @@ def donater_survey():
         budget = request.form.get('budget')
         size = request.form.get('party')
         type = request.form.get('specialization')
-        #SQLITE THINGS
+        #HOME DATABASE SQLITE THINGS
         conn = sqlite3.connect('homes_in_database.db')
         cursor = conn.cursor()
         create_table = """CREATE TABLE IF NOT EXISTS
@@ -236,6 +236,15 @@ def donater_survey():
         cursor.execute("INSERT INTO {tableName} (parish, type, size, budget) VALUES(?,?,?,?)".format(tableName=tableName),
         (parish, type, size, budget))
         conn.commit()
-        return render_template("my_matches.html", user=current_user)
+        # #EMAILS DATABASE SQLITE THINGS
+        # conn = sqlite3.connect('email_list.db')
+        # cursor = conn.cursor()
+        # create_table = """CREATE TABLE IF NOT EXISTS
+        # emails(id INTEGER PRIMARY KEY autoincrement, email TEXT)"""
+        # cursor.execute(create_table)
+        # tableName = "emails"
+        # cursor.execute("INSERT INTO {tableName} (email) VALUES(?)".format(tableName=tableName), (current_user.email))
+        # conn.commit()
+        return render_template("confirmation.html", user=current_user)
     else: 
         return render_template("match.html", user=current_user)

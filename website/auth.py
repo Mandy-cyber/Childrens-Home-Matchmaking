@@ -94,7 +94,7 @@ def signup():
                     db.session.add(new_donater)
                     db.session.commit()
                     login_user(new_user, remember=True)
-                    return redirect(url_for('views.chome_edit_your_profile'))
+                    return redirect(url_for('views.chome_edit_profile'))
                 elif new_user.urole == "CHome":
                     new_home = Home(home_name=full_name, home_email=email, home_password=generate_password_hash(password1, method='sha256'))
                     db.session.add(new_home)

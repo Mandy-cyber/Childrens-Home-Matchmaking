@@ -4,12 +4,13 @@
 
 .main-container{
     width: 100%;
-    height: 760px;
+    height: 1200px;
     display: flex;
+    margin-top: -12vw;
 }
 
 .form-outer-container{
-    height:760px;
+    height:1200px;
     width:100%;
     display: flex;
     align-items: center;
@@ -72,7 +73,7 @@ h3{
 }
 
 label{
-    font-size: 30px;
+    font-size: 25px;
     font-weight: 100;
     font-family: 'Barlow', sans-serif;
 }
@@ -102,7 +103,7 @@ label{
     background-color: #cfc3fd;
 }
 
-.form-button:hover{
+.formbutton:hover{
     transition: 0.3s;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); 
     transition: 0.3s; 
