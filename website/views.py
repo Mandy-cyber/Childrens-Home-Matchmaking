@@ -37,7 +37,8 @@ def chome_profile():
     if current_user.urole != "CHome":
         return redirect(url_for("auth.login"))
     #-------#
-    return render_template("chome_profile.html", user=current_user)
+    home = Home.query.filter_by(home_name=current_user.full_name).first() 
+    return render_template("chome_profile.html", user=current_user, home=home)
 
 @views.route('/chome-edit-profile', methods=['GET', 'POST'])
 @login_required
@@ -140,7 +141,8 @@ def chome_edit_profile():
             db.session.commit()
         db.session.commit()
         return redirect(url_for('views.chome_profile'))
-    return render_template("chome_edit_your_profile.html", user=current_user)
+    home = Home.query.filter_by(home_name=current_user.full_name).first() 
+    return render_template("chome_edit_your_profile.html", user=current_user, home=home)
 
 
 #------------------------------------------------------------------------#
