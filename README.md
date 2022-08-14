@@ -1,4 +1,4 @@
-# Jamaica Youth Project
+# Jamaica Youth Vision Project 
 
 <p align="center"> 
 
@@ -48,6 +48,8 @@ We would like to extend our most sincere gratitude to Katy Youth Hacks and Devpo
 [AoPS Online](https://artofproblemsolving.com/), [.xyz](https://gen.xyz/), [taskade](https://www.taskade.com/), [Digital Ocean](https://www.digitalocean.com/), [stickermule](https://www.stickermule.com/), [Desmos](https://www.desmos.com/), [Sticker Giant](https://www.stickergiant.com/event-coupons?utm_source=website&utm_medium=event), [Wolfram](https://www.wolfram.com/), [Interview Buddy](https://interviewbuddy.in/), [Construct](https://www.construct.net/en),[Scrimba](https://scrimba.com/),[Echo3D](https://www.echo3d.co/),[ThinkBoard](https://www.think-board.com/), [JDoodle](https://www.jdoodle.com/)
 
 We hope that our project will benefit Children in homes all across Jamaica. 
+![WhatsApp Image 2022-08-13 at 11 17 09 PM](https://user-images.githubusercontent.com/98140058/184537268-d7ab9920-5aa9-4b41-b10a-9b35fc73bac4.jpeg)
+
 
 
 
