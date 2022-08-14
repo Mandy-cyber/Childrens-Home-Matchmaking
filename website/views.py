@@ -5,6 +5,14 @@ from . import db
 from .models import User, Home, Donater
 import sqlite3
 
+# -----------------------------------------------------------------------------------------------------------------#
+# SETTING UP SQLITE THINGS for matchmaking survey
+# Connection and cursor
+# conn = sqlite3.connect('homes_in_database.db')
+# cursor = conn.cursor()
+# create_table = """CREATE TABLE IF NOT EXISTS
+# matchmaker(id INTEGER PRIMARY KEY autoincrement, parish TEXT, type TEXT, size TEXT, budget TEXT)"""
+# cursor.execute(create_table)
 
 
 #------------------------------------------------------------------------#
@@ -157,7 +165,8 @@ def donater():
     if current_user.urole != "Donater":
         return redirect(url_for("auth.login"))
     #-------#
-    return render_template("d_profile.html", user=current_user)
+    donater = Donater.query.filter_by(full_name=current_user.full_name).first() 
+    return render_template("d_profile.html", user=current_user, donater=donater)
 
 
 
@@ -201,7 +210,8 @@ def donater_edit_profile():
         db.session.commit()
         print(donater.full_name, donater.donater_email)
         return redirect(url_for("views.donater"))
-    return render_template("donater_edit_your_profile.html", user=current_user)
+    donater = Donater.query.filter_by(full_name=current_user.full_name).first() 
+    return render_template("donater_edit_your_profile.html", user=current_user, donater=donater)
 
 
 @views.route('/matchmaking-survey', methods=['GET', 'POST'])
@@ -214,7 +224,18 @@ def donater_survey():
     if request.method == 'POST':
         parish = request.form.get('parish')
         budget = request.form.get('budget')
-        party_size = request.form.get('party')
-        specialization = request.form.get('specialization')
+        size = request.form.get('party')
+        type = request.form.get('specialization')
+        #SQLITE THINGS
+        conn = sqlite3.connect('homes_in_database.db')
+        cursor = conn.cursor()
+        create_table = """CREATE TABLE IF NOT EXISTS
+        matchmaker(id INTEGER PRIMARY KEY autoincrement, parish TEXT, type TEXT, size TEXT, budget TEXT)"""
+        cursor.execute(create_table)
+        tableName = "matchmaker"
+        cursor.execute("INSERT INTO {tableName} (parish, type, size, budget) VALUES(?,?,?,?)".format(tableName=tableName),
+        (parish, type, size, budget))
+        conn.commit()
+        return render_template("my_matches.html", user=current_user)
     else: 
         return render_template("match.html", user=current_user)
