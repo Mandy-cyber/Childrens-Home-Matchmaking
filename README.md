@@ -1,7 +1,8 @@
 # Children's Home Matchmaking 
+
 <p align="center"> 
 
-<img src=https://www.mustardseed.com/our-work/where-we-serve/jamaica alt="Children From Children's Home" > 
+![children](https://user-images.githubusercontent.com/98140058/184535838-c190b800-4887-42c6-bbc6-57ada69a38ed.jpg)
 
 </p>
 
@@ -21,7 +22,7 @@ This project was developed for the Katy Youth Hacks Hackathon 2022. As a Jamaica
 ![background](https://user-images.githubusercontent.com/98140058/184535510-5de62361-2083-43ba-adf6-53dcb7115178.jpeg)
 
 ### Python 
-We used python to link the backend database with the html code. That is, Python was used to store and display signup information of both the homes and the donors. We also used python as the matchmaking system, our code matches the budgets and previously mentioned criteria. It then "matches" a donor to a home and this is shown on a popup card, displaying all the homes information. 
+We used python to link the backend database with the html code. That is, Python and HTML were used to store signup information of both the homes and the donors. We also used python as the matchmaking system, our code matches the budgets and previously mentioned criteria. It then "matches" a donor to a home and this is shown on a popup card, displaying all the homes information. 
 
 ### HTML
 Our project was mostly built on a combination of HTML and CSS. HTML was used to generate containers and display the navbar, signup forms, images, and link all the pages together among many other things. 
@@ -39,5 +40,6 @@ We would like to extend our most sincere gratitude to Katy Youth Hacks and Devpo
 [AoPS Online](https://artofproblemsolving.com/), [.xyz](https://gen.xyz/), [taskade](https://www.taskade.com/), [Digital Ocean](https://www.digitalocean.com/), [stickermule](https://www.stickermule.com/), [Desmos](https://www.desmos.com/), [Sticker Giant](https://www.stickergiant.com/event-coupons?utm_source=website&utm_medium=event), [Wolfram](https://www.wolfram.com/), [Interview Buddy](https://interviewbuddy.in/), [Construct](https://www.construct.net/en),[Scrimba](https://scrimba.com/),[Echo3D](https://www.echo3d.co/),[ThinkBoard](https://www.think-board.com/), [JDoodle](https://www.jdoodle.com/)
 
 We hope that our project will benefit Children in homes all across Jamaica. 
+
 
 
