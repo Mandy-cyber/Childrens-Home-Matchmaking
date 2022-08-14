@@ -10,9 +10,9 @@
     <button style="margin-top: 10px; background-color: #de8ed8; border: none; padding: 5px;"><a href="/shelters" style="text-decoration: none; color: white;">Start Now!</a></button>
 </div>
 
-<div id="wrapper" class="container" style="width: 1000px; margin-left: 22vw; margin-top: -42vw;">
+<div id="wrapper" class="container" style="width: 1000px; margin-left: 21vw; margin-top: -42vw;">
             {% for shelter in shelters %}
-            <div class="container" style="width: 250px; border: solid rgb(209, 205, 205) 2px; margin: 35px; float: left;">
+            <div class="container" style="width: 300px; border: solid rgb(209, 205, 205) 2px; margin: 35px; float: left;">
                 <ul class="list-group list-group-flush" id="shelters">
                     <li class="list-group-item">
                         <img src="{{ url_for('static', filename='example.jpg') }}" style="max-width: 100%; max-height: 100%;">
@@ -21,11 +21,13 @@
                         <h4>{{ shelter.home_name }}</h4>
                     </li>
                     <li class="list-group-item">
-                        {{ shelter.home_location }}
+                        <p>{{ shelter.home_description[0:100] }}...</p>
+                    </li>
+                    <li class="list-group-item">
+                        <p><a href="/learn-more/{{shelter.home_name}}">Learn More -></a></p>
                     </li>
                 </ul>
             </div>
             {% endfor %}
-        
 </div>
 {% endblock %}
