@@ -23,6 +23,7 @@
                 id="current_email" 
                 name="current_email" 
                 placeholder="Confirm current email address"
+                required
             />
             <br>
             <label for="home_email">New Email Address</label>
@@ -65,8 +66,25 @@
                 placeholder="Give a brief description of the home. Max 512 characters"
             />
             <br>
+            <label for="home_needs">Needs</label>
+            <input 
+                type="text" 
+                id="home_needs" 
+                name="home_needs" 
+                placeholder="What are your most pressing needs? e.g fridge"
+            />
+            <br>
+            <label for="home_needs_cost">Total Costs</label>
+            <input 
+                type="number" 
+                id="home_needs_cost" 
+                name="home_needs_cost" 
+                placeholder="What is the estimated cost value of your needs? e.g 50,000"
+            />
+            <br>
         <br>
         <button type="submit">Save Changes</button>
+        <button><a href="/chome">Cancel</a></button>
     </form>
 </div>
 
