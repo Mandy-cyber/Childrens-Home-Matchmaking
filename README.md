@@ -1,4 +1,4 @@
-# Children's Home Matchmaking 
+# Jamaica Youth Project
 
 <p align="center"> 
 
@@ -27,6 +27,14 @@ We used python to link the backend database with the html code. That is, Python 
 ### HTML
 Our project was mostly built on a combination of HTML and CSS. HTML was used to generate containers and display the navbar, signup forms, images, and link all the pages together among many other things. 
 ![WhatsApp Image 2022-08-14 at 2 05 33 AM](https://user-images.githubusercontent.com/98140058/184535794-73b1594d-0828-49b4-b6ab-3ad40e1afc5f.jpeg)
+- Image mapping for multiple pages
+- Formatting images and background
+- Hyperlinks
+- Forms
+- Navigation Bar
+
+### Security
+The login is a user authentication process which ensures that while the site is visible, there is a certain level of security. For example, if a user is using the system improperly, then they can be identified via their email address or other means. 
 
 ## Contributors:
 
