@@ -23,6 +23,11 @@ def shelters():
 def about():
     return render_template("about_us.html", user=current_user)
 
+@views.route('/learn-more/<home_name>')
+def shelter_details(home_name):
+    shelter_details = Home.query.filter(Home.home_name==home_name).first()
+    return render_template("shelter_details.html", user=current_user, shelter_details=shelter_details, home_name=home_name)
+
 #------------------------------------------------------------------------#
 #VIEWS TO DO WITH CHILDREN'S HOMES
 @views.route('/chome', methods=['GET', 'POST'])
